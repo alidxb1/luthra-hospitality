@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
     <style>
         /* ===== RESET & BASE ===== */
         * {
@@ -691,41 +690,96 @@
             color: #ffffff;
         }
 
-        .google-form-wrapper {
+        /* ===== BEAUTIFUL CUSTOM FORM ===== */
+        .custom-form-wrapper {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 1rem;
-            padding: 0.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            height: 100%;
-            min-height: 450px;
-        }
-
-        .google-form-wrapper iframe {
-            width: 100%;
-            height: 500px;
-            border: none;
-            border-radius: 0.5rem;
-            background: #ffffff;
-        }
-
-        /* ===== CALENDAR SECTION ===== */
-        #calendar {
-            background: #ffffff;
-        }
-
-        .calendar-wrapper {
-            background: var(--cream-light);
-            border-radius: 1.5rem;
             padding: 1.5rem;
-            border: 1px solid var(--border);
-            min-height: 500px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        .calendar-wrapper .calendly-inline-widget {
-            min-height: 550px;
+        .custom-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .custom-form .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .custom-form input,
+        .custom-form textarea,
+        .custom-form select {
+            padding: 0.8rem 1.2rem;
+            border-radius: 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.06);
+            color: #ffffff;
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
             width: 100%;
-            border-radius: 1rem;
-            overflow: hidden;
+            outline: none;
+        }
+
+        .custom-form input::placeholder,
+        .custom-form textarea::placeholder {
+            color: #7a6b57;
+        }
+
+        .custom-form input:focus,
+        .custom-form textarea:focus,
+        .custom-form select:focus {
+            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 0 3px rgba(184, 154, 75, 0.1);
+        }
+
+        .custom-form select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b89a4b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            cursor: pointer;
+        }
+
+        .custom-form select option {
+            background: var(--charcoal);
+            color: #ffffff;
+        }
+
+        .custom-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .custom-form .btn-primary {
+            align-self: flex-start;
+            padding: 0.8rem 2.5rem;
+        }
+
+        .form-success {
+            display: none;
+            background: rgba(45, 125, 70, 0.15);
+            border: 1px solid #2d7d46;
+            padding: 1rem 1.5rem;
+            border-radius: 0.8rem;
+            color: #a8e6b8;
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .form-success.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .form-success i {
+            color: #4caf50;
+            margin-right: 0.6rem;
         }
 
         /* ===== FOOTER ===== */
@@ -829,6 +883,10 @@
                 gap: 1.5rem;
             }
 
+            .custom-form .form-row {
+                grid-template-columns: 1fr;
+            }
+
             .footer {
                 flex-direction: column;
                 text-align: center;
@@ -836,10 +894,6 @@
             }
             .metrics-grid {
                 grid-template-columns: 1fr 1fr;
-            }
-
-            .google-form-wrapper iframe {
-                height: 550px;
             }
         }
 
@@ -877,11 +931,8 @@
             .photo-wrapper {
                 max-width: 130px;
             }
-            .google-form-wrapper iframe {
-                height: 600px;
-            }
-            .calendar-wrapper {
-                padding: 0.5rem;
+            .custom-form-wrapper {
+                padding: 1rem;
             }
         }
 
@@ -912,7 +963,6 @@
                 <li><a href="#services">Services</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#calendar">Calendar</a></li>
                 <li><a href="#contact" class="nav-cta">Contact</a></li>
             </ul>
         </nav>
@@ -921,7 +971,7 @@
         <header class="hero" id="home">
             <div class="hero-image">
                 <div class="photo-wrapper">
-                    <img src="https://res.cloudinary.com/ggpmlhti/image/upload/v1784294587/picture_whubpt.png" alt="Sanjay Luthra" />
+                    <img src="https://res.cloudinary.com/ggpmlhti/image/upload/v1784294586/picture1_ztqx9e.jpg" alt="Sanjay Luthra" />
                 </div>
             </div>
             <div class="hero-text">
@@ -937,7 +987,6 @@
                 </div>
                 <div class="hero-cta-group">
                     <a href="#contact" class="btn-primary"><i class="fas fa-handshake"></i> Let's Connect</a>
-                    <a href="#calendar" class="btn-secondary"><i class="fas fa-calendar-alt"></i> Schedule a Meeting</a>
                 </div>
             </div>
         </header>
@@ -1129,7 +1178,6 @@
                     </div>
                 </div>
 
-                <!-- Cluster Property List -->
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0.8rem;">
                     <div style="display: flex; align-items: center; gap: 0.8rem; background: #ffffff; padding: 0.8rem 1rem; border-radius: 0.8rem; border: 1px solid var(--border);">
                         <span style="background: var(--gold); color: #fff; font-size: 0.6rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 20px; white-space: nowrap;">4★</span>
@@ -1324,24 +1372,6 @@
             </div>
         </section>
 
-        <!-- ===== CALENDAR ===== -->
-        <section id="calendar">
-            <div class="section-label">Schedule a Meeting</div>
-            <div class="section-divider"></div>
-            <h2 class="section-title">Let's Find a <span>Time</span></h2>
-            <p class="section-desc">
-                Select a convenient time slot below to discuss how we can collaborate on your hospitality asset.
-            </p>
-
-            <div class="calendar-wrapper">
-                <div class="calendly-inline-widget" data-url="https://calendly.com/sanlmt/30min" style="min-height:550px;width:100%;"></div>
-            </div>
-            <p style="text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
-                <i class="fas fa-clock" style="color: var(--gold);"></i> 
-                All times are in Gulf Standard Time (GST) · Dubai, UAE
-            </p>
-        </section>
-
         <!-- ===== CONTACT ===== -->
         <section id="contact">
             <div class="section-label">Get in Touch</div>
@@ -1376,25 +1406,69 @@
                             <i class="fas fa-check-circle" style="color:var(--gold);"></i>
                             UAE-based · Available for immediate discussions
                         </p>
-                        <p style="color:#7a6b57; font-size:0.85rem; margin-top:0.3rem;">
-                            <i class="fas fa-check-circle" style="color:var(--gold);"></i>
-                            <a href="#calendar" style="color: var(--gold); text-decoration: none;">Schedule a meeting</a> via the calendar above
-                        </p>
                     </div>
                 </div>
 
+                <!-- ===== BEAUTIFUL CUSTOM FORM ===== -->
                 <div>
                     <h3 style="font-size: 1.1rem; margin-bottom: 0.8rem; color: #ffffff;">
                         <i class="fas fa-paper-plane" style="color:var(--gold); margin-right:0.5rem;"></i> 
                         Send an Inquiry
                     </h3>
-                    <div class="google-form-wrapper">
-                        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfsiRldhDEUqjkJES7PcTf2PfL3mk9-He7VusMgFmlwnGnWZw/viewform?usp=publish-editor" 
-                            frameborder="0" 
-                            marginheight="0" 
-                            marginwidth="0">
-                            Loading…
-                        </iframe>
+
+                    <div class="custom-form-wrapper">
+                        <!-- 
+                            IMPORTANT: To connect this form to Google Forms, follow these steps:
+                            
+                            1. Create your Google Form with these field names:
+                               - Full Name → entry.NAME
+                               - Email Address → entry.EMAIL  
+                               - Phone Number → entry.PHONE
+                               - Property Name → entry.PROPERTY
+                               - Interest → entry.INTEREST
+                               - Message → entry.MESSAGE
+                            
+                            2. Get your Google Form's ACTION URL:
+                               - Open your form in Google Forms
+                               - Click the "Send" button
+                               - Click the "< >" (Embed) tab
+                               - Copy the src URL: https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform
+                               - The action URL will be: https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse
+                            
+                            3. UNCOMMENT the JavaScript at the bottom of this page
+                            4. Replace YOUR_FORM_ID with your actual form ID
+                            5. Update the field names if needed
+                        -->
+
+                        <form class="custom-form" id="inquiryForm" action="#" method="POST">
+                            <div class="form-row">
+                                <input type="text" name="entry.NAME" placeholder="Full Name" required />
+                                <input type="email" name="entry.EMAIL" placeholder="Email Address" required />
+                            </div>
+                            <div class="form-row">
+                                <input type="tel" name="entry.PHONE" placeholder="Phone Number" />
+                                <input type="text" name="entry.PROPERTY" placeholder="Property Name / Location" />
+                            </div>
+                            <select name="entry.INTEREST">
+                                <option value="">Select Your Interest</option>
+                                <option value="leasing">Hotel Leasing</option>
+                                <option value="management">Operations Management</option>
+                                <option value="advisory">Advisory & Consultancy</option>
+                                <option value="turnaround">Asset Turnaround</option>
+                                <option value="preopening">Pre-Opening / Rebranding</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <textarea name="entry.MESSAGE" placeholder="Tell me about your property and what you're looking for..." required></textarea>
+
+                            <button type="submit" class="btn-primary" id="submitBtn">
+                                <i class="fas fa-paper-plane"></i> Send Inquiry
+                            </button>
+
+                            <div class="form-success" id="formSuccess">
+                                <i class="fas fa-check-circle"></i> 
+                                Your inquiry has been sent! I'll get back to you within 24 hours.
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -1414,8 +1488,6 @@
 
         <div class="gold-bar"></div>
     </div>
-
-    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 
     <script>
         // ===== NAVIGATION TOGGLE =====
@@ -1465,18 +1537,34 @@
             });
         });
 
-        // ===== CALENDLY INIT =====
-        document.addEventListener('DOMContentLoaded', function() {
-            if (window.Calendly) {
-                window.Calendly.initInlineWidgets();
-            }
-        });
+        // ============================================================
+        // ===== GOOGLE FORM SUBMISSION (UNCOMMENT AFTER SETUP) =====
+        // ============================================================
+        /*
+        // STEP 1: Replace YOUR_FORM_ID with your actual form ID
+        document.getElementById('inquiryForm').action = 'https://docs.google.com/forms/d/e/1FAIpQLSfkzKTDfwNlOIE_cSXQ-ZCDGZSLeJTz_J7He27jOx0MggmEvw/viewform?usp=publish-editor';
+        document.getElementById('inquiryForm').target = 'hiddenFrame';
 
-        setTimeout(function() {
-            if (window.Calendly) {
-                window.Calendly.initInlineWidgets();
-            }
-        }, 3000);
+        // Create hidden iframe for form submission
+        const hiddenFrame = document.createElement('iframe');
+        hiddenFrame.name = 'hiddenFrame';
+        hiddenFrame.style.display = 'none';
+        document.body.appendChild(hiddenFrame);
+
+        document.getElementById('inquiryForm').addEventListener('submit', function(e) {
+            // Show success message after submission
+            setTimeout(function() {
+                document.getElementById('formSuccess').classList.add('show');
+                document.getElementById('submitBtn').innerHTML = '<i class="fas fa-check"></i> Sent Successfully';
+                document.getElementById('submitBtn').style.background = '#2d7d46';
+                setTimeout(function() {
+                    document.getElementById('inquiryForm').reset();
+                    document.getElementById('submitBtn').innerHTML = '<i class="fas fa-paper-plane"></i> Send Inquiry';
+                    document.getElementById('submitBtn').style.background = '';
+                }, 3000);
+            }, 1500);
+        });
+        */
     </script>
 
 </body>
