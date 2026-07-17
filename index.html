@@ -243,40 +243,32 @@
         }
 
         .hero-text .subtitle {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             font-weight: 400;
             color: #d0c5b0;
-            max-width: 600px;
+            max-width: 700px;
+            line-height: 1.6;
         }
         .hero-text .subtitle i {
             color: var(--gold);
             margin-right: 0.4rem;
         }
-
-        .hero-contact {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.2rem 2.5rem;
-            margin-top: 0.3rem;
-            padding-top: 0.8rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        .hero-text .subtitle .highlight-gold {
+            color: var(--gold-light);
+            font-weight: 500;
         }
 
-        .hero-contact a {
-            color: #d4cbbd;
-            text-decoration: none;
-            font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            transition: color 0.2s;
-        }
-        .hero-contact a i {
-            color: var(--gold);
-            width: 1.2rem;
-        }
-        .hero-contact a:hover {
+        .hero-tagline {
+            font-size: 1.3rem;
+            font-weight: 700;
             color: #ffffff;
+            margin-top: 0.2rem;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+        }
+
+        .hero-tagline span {
+            color: var(--gold);
         }
 
         .hero-cta-group {
@@ -812,6 +804,23 @@
             font-size: 1.1rem;
         }
 
+        .footer-contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.5rem;
+            align-items: center;
+        }
+
+        .footer-contact span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .footer-contact i {
+            color: var(--gold);
+        }
+
         /* ===== RESPONSIVE ===== */
         @media screen and (max-width: 1024px) {
             .hero {
@@ -826,6 +835,9 @@
             }
             .hero-text h1 {
                 font-size: 2.4rem;
+            }
+            .hero-tagline {
+                font-size: 1.1rem;
             }
         }
 
@@ -842,8 +854,8 @@
             .hero-text .subtitle {
                 margin: 0 auto;
             }
-            .hero-contact {
-                justify-content: center;
+            .hero-tagline {
+                margin: 0 auto;
             }
             .hero-cta-group {
                 justify-content: center;
@@ -892,6 +904,9 @@
                 text-align: center;
                 padding: 1rem 1.5rem;
             }
+            .footer-contact {
+                justify-content: center;
+            }
             .metrics-grid {
                 grid-template-columns: 1fr 1fr;
             }
@@ -901,10 +916,8 @@
             .hero-text h1 {
                 font-size: 1.8rem;
             }
-            .hero-contact {
-                flex-direction: column;
-                align-items: center;
-                gap: 0.4rem;
+            .hero-tagline {
+                font-size: 1rem;
             }
             .metrics-grid {
                 grid-template-columns: 1fr 1fr;
@@ -933,6 +946,10 @@
             }
             .custom-form-wrapper {
                 padding: 1rem;
+            }
+            .footer-contact {
+                flex-direction: column;
+                gap: 0.4rem;
             }
         }
 
@@ -976,17 +993,21 @@
             </div>
             <div class="hero-text">
                 <div class="badge-exec"><i class="fas fa-crown" style="margin-right:0.4rem;"></i> C-Suite · Hospitality Leader</div>
+
                 <h1>Asset Management &amp; <span>Advisory</span></h1>
-                <p class="subtitle">
-                    <i class="fas fa-asterisk"></i> 40+ years of driving profitability, asset protection, and market leadership across the UAE &amp; KSA.
-                </p>
-                <div class="hero-contact">
-                    <a href="tel:+971506457593"><i class="fas fa-phone-alt"></i> +971 50 645 7593</a>
-                    <a href="mailto:sanlmt@gmail.com"><i class="fas fa-envelope"></i> sanlmt@gmail.com</a>
-                    <a href="#"><i class="fas fa-map-pin"></i> Dubai, UAE</a>
+
+                <div class="hero-tagline">
+                    <span>✦</span> Unlocking Hidden Value, <span>One Asset at a Time</span>
                 </div>
+
+                <p class="subtitle">
+                    <i class="fas fa-asterisk"></i> 
+                    <span class="highlight-gold">40+ Years</span> Of Driving Profitability, Asset Protection, And Market Leadership Across The <span class="highlight-gold">UAE &amp; KSA</span>
+                </p>
+
                 <div class="hero-cta-group">
                     <a href="#contact" class="btn-primary"><i class="fas fa-handshake"></i> Let's Connect</a>
+                    <a href="#track-record" class="btn-secondary"><i class="fas fa-chart-line"></i> View Track Record</a>
                 </div>
             </div>
         </header>
@@ -1479,6 +1500,11 @@
             <div>
                 &copy; 2026 <span style="color:var(--gold);">Luthra Hospitality</span> · Asset Management &amp; Advisory
             </div>
+            <div class="footer-contact">
+                <span><i class="fas fa-phone-alt"></i> +971 50 645 7593</span>
+                <span><i class="fas fa-envelope"></i> sanlmt@gmail.com</span>
+                <span><i class="fas fa-map-pin"></i> Dubai, UAE</span>
+            </div>
             <div class="socials">
                 <a href="https://www.linkedin.com/in/sanjay-luthra-6a587a372/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                 <a href="mailto:sanlmt@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
@@ -1542,7 +1568,7 @@
         // ============================================================
         /*
         // STEP 1: Replace YOUR_FORM_ID with your actual form ID
-        document.getElementById('inquiryForm').action = 'https://docs.google.com/forms/d/e/1FAIpQLSfkzKTDfwNlOIE_cSXQ-ZCDGZSLeJTz_J7He27jOx0MggmEvw/viewform?usp=publish-editor';
+        document.getElementById('inquiryForm').action = 'https://docs.google.com/forms/d/e/1FAIpQLSfkzKTDfwNlOIE_cSXQ-ZCDGZSLeJTz_J7He27jOx0MggmEvw/viewform?usp=dialog';
         document.getElementById('inquiryForm').target = 'hiddenFrame';
 
         // Create hidden iframe for form submission
