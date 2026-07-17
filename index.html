@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <!-- Calendly CSS (for calendar styling) -->
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
     <style>
         /* ===== RESET & BASE ===== */
@@ -44,7 +43,6 @@
             line-height: 1.6;
         }
 
-        /* ===== SCROLLBAR ===== */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -59,7 +57,6 @@
             background: var(--gold-dark);
         }
 
-        /* ===== CONTAINER ===== */
         .app-container {
             max-width: 1280px;
             margin: 0 auto;
@@ -80,7 +77,6 @@
             }
         }
 
-        /* ===== GOLD BAR ===== */
         .gold-bar {
             height: 4px;
             background: linear-gradient(90deg, var(--gold-dark), var(--gold-light), var(--gold-dark));
@@ -202,7 +198,6 @@
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
             transition: transform var(--transition), box-shadow var(--transition);
-            cursor: pointer;
         }
 
         .photo-wrapper:hover {
@@ -215,36 +210,6 @@
             height: 100%;
             object-fit: cover;
             display: block;
-        }
-
-        .photo-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.7);
-            color: var(--gold);
-            text-align: center;
-            padding: 0.3rem 0;
-            font-size: 0.6rem;
-            letter-spacing: 0.5px;
-            opacity: 0;
-            transition: opacity var(--transition);
-            backdrop-filter: blur(4px);
-            font-weight: 500;
-            cursor: pointer;
-        }
-
-        .photo-wrapper:hover .photo-overlay {
-            opacity: 1;
-        }
-
-        .photo-overlay i {
-            margin-right: 0.3rem;
-        }
-
-        #photoInput {
-            display: none;
         }
 
         .hero-text {
@@ -581,7 +546,7 @@
 
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 1.5rem;
         }
 
@@ -599,64 +564,35 @@
 
         .portfolio-image {
             width: 100%;
-            height: 200px;
+            height: 160px;
             background: #e5ddd0;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            position: relative;
             overflow: hidden;
+            position: relative;
         }
 
         .portfolio-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-
-        .portfolio-image .upload-hint {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.7);
-            color: #fff;
-            text-align: center;
-            padding: 0.3rem 0;
-            font-size: 0.6rem;
-            letter-spacing: 0.5px;
-            opacity: 0;
-            transition: opacity var(--transition);
-            cursor: pointer;
-        }
-
-        .portfolio-card:hover .upload-hint {
-            opacity: 1;
-        }
-
-        .portfolio-image .upload-hint i {
-            margin-right: 0.3rem;
-        }
-
-        .portfolio-image input[type="file"] {
-            display: none;
+            display: block;
         }
 
         .portfolio-info {
-            padding: 1.2rem 1.4rem;
+            padding: 1rem 1.2rem;
         }
         .portfolio-info h3 {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
         }
         .portfolio-info .meta {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
         }
         .portfolio-info .highlight {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--gold);
             font-weight: 600;
             margin-top: 0.2rem;
@@ -755,7 +691,6 @@
             color: #ffffff;
         }
 
-        /* Google Form Wrapper */
         .google-form-wrapper {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 1rem;
@@ -954,10 +889,6 @@
             .navbar {
                 position: static;
             }
-            .photo-overlay,
-            .upload-hint {
-                display: none !important;
-            }
         }
     </style>
 </head>
@@ -965,7 +896,6 @@
 
     <div class="app-container">
 
-        <!-- GOLD BAR -->
         <div class="gold-bar"></div>
 
         <!-- ===== NAVIGATION ===== -->
@@ -990,13 +920,9 @@
         <!-- ===== HERO ===== -->
         <header class="hero" id="home">
             <div class="hero-image">
-                <div class="photo-wrapper" id="photoWrapper" onclick="document.getElementById('photoInput').click()">
-                    <img src="https://res.cloudinary.com/ggpmlhti/image/upload/v1784294587/picture_whubpt.png" alt="Sanjay Luthra" id="profileImage" />
-                    <div class="photo-overlay">
-                        <i class="fas fa-camera"></i> Upload Photo
-                    </div>
+                <div class="photo-wrapper">
+                    <img src="https://res.cloudinary.com/ggpmlhti/image/upload/v1784294587/picture_whubpt.png" alt="Sanjay Luthra" />
                 </div>
-                <input type="file" id="photoInput" accept="image/*" onchange="uploadPhoto(event)" />
             </div>
             <div class="hero-text">
                 <div class="badge-exec"><i class="fas fa-crown" style="margin-right:0.4rem;"></i> C-Suite · Hospitality Leader</div>
@@ -1067,8 +993,8 @@
                     <div class="label">Hotels Managed</div>
                 </div>
                 <div class="metric-card">
-                    <div class="number">16%</div>
-                    <div class="label">ARR Increase</div>
+                    <div class="number">23%</div>
+                    <div class="label">Revenue Increase</div>
                 </div>
                 <div class="metric-card">
                     <div class="number">7</div>
@@ -1079,7 +1005,7 @@
                     <div class="label">Industry Awards</div>
                 </div>
                 <div class="metric-card">
-                    <div class="number">10%</div>
+                    <div class="number">18%</div>
                     <div class="label">Target Overachievement</div>
                 </div>
             </div>
@@ -1242,7 +1168,6 @@
                     </div>
                 </div>
 
-                <!-- Cluster Stats -->
                 <div style="display: flex; flex-wrap: wrap; gap: 0.8rem 2rem; margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--border);">
                     <span style="font-size: 0.85rem; color: var(--text-muted);"><i class="fas fa-hotel" style="color: var(--gold);"></i> <strong>7</strong> Properties</span>
                     <span style="font-size: 0.85rem; color: var(--text-muted);"><i class="fas fa-star" style="color: var(--gold);"></i> 4★ &amp; 3★ Properties</span>
@@ -1258,14 +1183,9 @@
             </h3>
 
             <div class="portfolio-grid">
-                <!-- Metropolitan Hotel Dubai -->
                 <div class="portfolio-card">
-                    <div class="portfolio-image" id="portfolioImage1">
-                        <img src="https://res.cloudinary.com/ggpmlhti/image/upload/v1784294961/Metopolitan_Hotel_qzn6r4.png" id="portfolioImg1" />
-                        <div class="upload-hint" onclick="event.stopPropagation(); document.getElementById('portfolioInput1').click();">
-                            <i class="fas fa-camera"></i> Upload Image
-                        </div>
-                        <input type="file" id="portfolioInput1" accept="image/*" onchange="uploadPortfolioImage(event, 'portfolioImg1')" />
+                    <div class="portfolio-image">
+                        <img src="https://res.cloudinary.com/ggpmlhti/image/upload/v1784294961/Metopolitan_Hotel_qzn6r4.png" alt="Metropolitan Hotel Dubai" />
                     </div>
                     <div class="portfolio-info">
                         <h3>Metropolitan Hotel Dubai</h3>
@@ -1274,14 +1194,9 @@
                     </div>
                 </div>
 
-                <!-- Metropolitan Palace Hotel -->
                 <div class="portfolio-card">
-                    <div class="portfolio-image" id="portfolioImage2">
-                        <img src="https://res.cloudinary.com/ggpmlhti/image/upload/v1784294961/Metopolitan_Hotel_qzn6r4.png" id="portfolioImg2" />
-                        <div class="upload-hint" onclick="event.stopPropagation(); document.getElementById('portfolioInput2').click();">
-                            <i class="fas fa-camera"></i> Upload Image
-                        </div>
-                        <input type="file" id="portfolioInput2" accept="image/*" onchange="uploadPortfolioImage(event, 'portfolioImg2')" />
+                    <div class="portfolio-image">
+                        <img src="https://res.cloudinary.com/ggpmlhti/image/upload/v1784294961/Metopolitan_Hotel_qzn6r4.png" alt="Metropolitan Palace Hotel" />
                     </div>
                     <div class="portfolio-info">
                         <h3>Metropolitan Palace Hotel</h3>
@@ -1290,14 +1205,9 @@
                     </div>
                 </div>
 
-                <!-- Metropolitan Deira Hotel -->
                 <div class="portfolio-card">
-                    <div class="portfolio-image" id="portfolioImage3">
-                        <img src="https://res.cloudinary.com/ggpmlhti/image/upload/v1784294961/Metopolitan_Hotel_qzn6r4.png" id="portfolioImg3" />
-                        <div class="upload-hint" onclick="event.stopPropagation(); document.getElementById('portfolioInput3').click();">
-                            <i class="fas fa-camera"></i> Upload Image
-                        </div>
-                        <input type="file" id="portfolioInput3" accept="image/*" onchange="uploadPortfolioImage(event, 'portfolioImg3')" />
+                    <div class="portfolio-image">
+                        <img src="https://res.cloudinary.com/ggpmlhti/image/upload/v1784294961/Metopolitan_Hotel_qzn6r4.png" alt="Metropolitan Deira Hotel" />
                     </div>
                     <div class="portfolio-info">
                         <h3>Metropolitan Deira Hotel</h3>
@@ -1306,14 +1216,9 @@
                     </div>
                 </div>
 
-                <!-- Metropolitan Beach Resort -->
                 <div class="portfolio-card">
-                    <div class="portfolio-image" id="portfolioImage4">
-                        <img src="https://res.cloudinary.com/ggpmlhti/image/upload/v1784294961/Metopolitan_Hotel_qzn6r4.png" id="portfolioImg4" />
-                        <div class="upload-hint" onclick="event.stopPropagation(); document.getElementById('portfolioInput4').click();">
-                            <i class="fas fa-camera"></i> Upload Image
-                        </div>
-                        <input type="file" id="portfolioInput4" accept="image/*" onchange="uploadPortfolioImage(event, 'portfolioImg4')" />
+                    <div class="portfolio-image">
+                        <img src="https://res.cloudinary.com/ggpmlhti/image/upload/v1784294961/Metopolitan_Hotel_qzn6r4.png" alt="Metropolitan Beach Resort" />
                     </div>
                     <div class="portfolio-info">
                         <h3>Metropolitan Beach Resort</h3>
@@ -1322,46 +1227,31 @@
                     </div>
                 </div>
 
-                <!-- Hawthorn / Avenue Hotel -->
                 <div class="portfolio-card">
-                    <div class="portfolio-image" id="portfolioImage5">
-                        <img src="https://res.cloudinary.com/ggpmlhti/image/upload/v1784294961/Hawthorn_gsovzi.png" id="portfolioImg5" />
-                        <div class="upload-hint" onclick="event.stopPropagation(); document.getElementById('portfolioInput5').click();">
-                            <i class="fas fa-camera"></i> Upload Image
-                        </div>
-                        <input type="file" id="portfolioInput5" accept="image/*" onchange="uploadPortfolioImage(event, 'portfolioImg5')" />
+                    <div class="portfolio-image">
+                        <img src="https://res.cloudinary.com/ggpmlhti/image/upload/v1784294961/Hawthorn_gsovzi.png" alt="Hawthorn Hotel" />
                     </div>
                     <div class="portfolio-info">
                         <h3>Hawthorn Hotel / Avenue Hotel</h3>
                         <div class="meta">4★ · Wyndham (Rebranding)</div>
-                        <div class="highlight">16% ARR Increase · 2008-2009</div>
+                        <div class="highlight">23% Revenue Increase · 2008-2009</div>
                     </div>
                 </div>
 
-                <!-- Royal Abjar Hotel -->
                 <div class="portfolio-card">
-                    <div class="portfolio-image" id="portfolioImage6">
-                        <img src="https://res.cloudinary.com/ggpmlhti/image/upload/v1784294961/Renaissance_jmdzrs.png" id="portfolioImg6" />
-                        <div class="upload-hint" onclick="event.stopPropagation(); document.getElementById('portfolioInput6').click();">
-                            <i class="fas fa-camera"></i> Upload Image
-                        </div>
-                        <input type="file" id="portfolioInput6" accept="image/*" onchange="uploadPortfolioImage(event, 'portfolioImg6')" />
+                    <div class="portfolio-image">
+                        <img src="https://res.cloudinary.com/ggpmlhti/image/upload/v1784294961/Renaissance_jmdzrs.png" alt="Royal Abjar Hotel" />
                     </div>
                     <div class="portfolio-info">
                         <h3>Royal Abjar Hotel (Renaissance)</h3>
                         <div class="meta">5★ Diamond Award · Leading Hotels of the World</div>
-                        <div class="highlight">10% Target Overachievement · 1997-1998</div>
+                        <div class="highlight">18% Target Overachievement · 1997-1998</div>
                     </div>
                 </div>
 
-                <!-- Bin Haider Hospitality (5 Hotels) -->
                 <div class="portfolio-card" style="border: 2px solid var(--gold);">
-                    <div class="portfolio-image" id="portfolioImage7">
-                        <img src="https://res.cloudinary.com/ggpmlhti/image/upload/v1784296833/logo-hospitality_q1brbg.jpg" id="portfolioImg7" />
-                        <div class="upload-hint" onclick="event.stopPropagation(); document.getElementById('portfolioInput7').click();">
-                            <i class="fas fa-camera"></i> Upload Image
-                        </div>
-                        <input type="file" id="portfolioInput7" accept="image/*" onchange="uploadPortfolioImage(event, 'portfolioImg7')" />
+                    <div class="portfolio-image">
+                        <img src="https://res.cloudinary.com/ggpmlhti/image/upload/v1784296833/logo-hospitality_q1brbg.jpg" alt="Bin Haider Hospitality" />
                     </div>
                     <div class="portfolio-info">
                         <h3>Bin Haider Hospitality <span style="font-size: 0.7rem; color: var(--gold); font-weight: 600;">Cluster</span></h3>
@@ -1371,7 +1261,6 @@
                 </div>
             </div>
 
-            <!-- Portfolio Summary -->
             <div style="display: flex; flex-wrap: wrap; gap: 1.5rem 3rem; margin-top: 2rem; padding: 1.5rem 2rem; background: var(--cream-light); border-radius: 1.2rem; border: 1px solid var(--border);">
                 <div>
                     <span style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted);">Total Properties</span>
@@ -1403,7 +1292,7 @@
             <div class="testimonial-grid">
                 <div class="testimonial-card">
                     <p class="quote">
-                        <i class="fas fa-quote-left"></i> Recognized by Habtoor Hotels for giving the biggest GOP growth after joining since the Revenue for the year 2010 increased majorly over the previous year thus improvising the bottom line tremendously.
+                        <i class="fas fa-quote-left"></i> Recognized by Habtoor Hotels for giving the biggest GOP growth after joining since the revenue for the year 2010 increased majorly over the previous year, thus improvising the bottom line tremendously.
                     </p>
                     <div class="author">Al Habtoor Group</div>
                     <div class="role">GOP Growth Recognition · 2010</div>
@@ -1411,7 +1300,7 @@
 
                 <div class="testimonial-card">
                     <p class="quote">
-                        <i class="fas fa-quote-left"></i> Part of the team member who had over-achieved the revenue targets in Royal Abjar Hotel (Renaissance) and also successfully overachieved the personal sales target by 10%.
+                        <i class="fas fa-quote-left"></i> Part of the team member who had over-achieved the revenue targets in Royal Abjar Hotel (Renaissance) and also successfully overachieved the personal sales target by 18%.
                     </p>
                     <div class="author">Royal Abjar Hotel (Renaissance)</div>
                     <div class="role">Sales Excellence · 1997-1998</div>
@@ -1427,7 +1316,7 @@
 
                 <div class="testimonial-card">
                     <p class="quote">
-                        <i class="fas fa-quote-left"></i> Recognized by Hawthorn Hotel for putting in place correct revenue Management Structure and Policies along with streamlining the overall operations of the Hotel.
+                        <i class="fas fa-quote-left"></i> Recognized by Hawthorn Hotel for putting in place correct revenue management structure and policies along with streamlining the overall operations of the hotel.
                     </p>
                     <div class="author">Hawthorn Hotel (Wyndham)</div>
                     <div class="role">Revenue Management Excellence · 2008-2009</div>
@@ -1445,7 +1334,6 @@
             </p>
 
             <div class="calendar-wrapper">
-                <!-- Calendly Inline Widget -->
                 <div class="calendly-inline-widget" data-url="https://calendly.com/sanlmt/30min" style="min-height:550px;width:100%;"></div>
             </div>
             <p style="text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
@@ -1495,26 +1383,12 @@
                     </div>
                 </div>
 
-                <!-- Google Form Integration -->
                 <div>
                     <h3 style="font-size: 1.1rem; margin-bottom: 0.8rem; color: #ffffff;">
                         <i class="fas fa-paper-plane" style="color:var(--gold); margin-right:0.5rem;"></i> 
                         Send an Inquiry
                     </h3>
                     <div class="google-form-wrapper">
-                        <!-- 
-                            REPLACE THE SRC BELOW WITH YOUR GOOGLE FORM EMBED URL
-                            
-                            HOW TO GET YOUR GOOGLE FORM EMBED URL:
-                            1. Go to Google Forms and create your form
-                            2. Click the "Send" button (top right)
-                            3. Click the "< >" (embed) tab
-                            4. Copy the entire src URL from the iframe code
-                            5. Paste it below replacing the current src
-                            
-                            EXAMPLE: 
-                            src="https://docs.google.com/forms/d/e/your-form-id/viewform?embedded=true"
-                        -->
                         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfsiRldhDEUqjkJES7PcTf2PfL3mk9-He7VusMgFmlwnGnWZw/viewform?usp=publish-editor" 
                             frameborder="0" 
                             marginheight="0" 
@@ -1532,7 +1406,6 @@
                 &copy; 2026 <span style="color:var(--gold);">Luthra Hospitality</span> · Asset Management &amp; Advisory
             </div>
             <div class="socials">
-                <!-- REPLACE YOUR-LINKEDIN-URL with your actual LinkedIn profile URL -->
                 <a href="https://www.linkedin.com/in/sanjay-luthra-6a587a372/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                 <a href="mailto:sanlmt@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
                 <a href="#" title="Twitter/X"><i class="fab fa-x-twitter"></i></a>
@@ -1542,8 +1415,7 @@
         <div class="gold-bar"></div>
     </div>
 
-    <!-- Calendly JavaScript -->
-    <script src="https://calendly.com/ali-lmhsdxb/30min" type="text/javascript" async></script>
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 
     <script>
         // ===== NAVIGATION TOGGLE =====
@@ -1554,14 +1426,13 @@
             navLinks.classList.toggle('open');
         });
 
-        // Close nav on link click (mobile)
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('open');
             });
         });
 
-        // Active link highlight
+        // ===== ACTIVE LINK HIGHLIGHT =====
         const sections = document.querySelectorAll('section[id]');
         const navLinksAll = document.querySelectorAll('.nav-links a:not(.nav-cta)');
 
@@ -1581,31 +1452,7 @@
             });
         });
 
-        // ===== PHOTO UPLOAD (Local) =====
-        function uploadPhoto(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('profileImage').src = e.target.result;
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-
-        // ===== PORTFOLIO IMAGE UPLOAD (Local) =====
-        function uploadPortfolioImage(event, imgId) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById(imgId).src = e.target.result;
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-
-        // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
+        // ===== SMOOTH SCROLL =====
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const href = this.getAttribute('href');
@@ -1618,12 +1465,18 @@
             });
         });
 
-        // ===== CALENDLY WIDGET RELOAD (for responsiveness) =====
-        window.addEventListener('resize', function() {
+        // ===== CALENDLY INIT =====
+        document.addEventListener('DOMContentLoaded', function() {
             if (window.Calendly) {
                 window.Calendly.initInlineWidgets();
             }
         });
+
+        setTimeout(function() {
+            if (window.Calendly) {
+                window.Calendly.initInlineWidgets();
+            }
+        }, 3000);
     </script>
 
 </body>
