@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes" />
-    <title>Luthra Hospitality · Asset Management & Lease Advisory</title>
+    <title>Luthra Hospitality · Asset Management & Advisory</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <!-- Calendly CSS (for calendar styling) -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
     <style>
         /* ===== RESET & BASE ===== */
         * {
@@ -396,8 +398,8 @@
             border-radius: 2px;
         }
 
-        /* ===== WHY LEASE ===== */
-        #why-lease {
+        /* ===== WHY CHOOSE US ===== */
+        #why-choose {
             background: var(--cream-light);
         }
 
@@ -753,43 +755,42 @@
             color: #ffffff;
         }
 
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            padding: 0.8rem 1.2rem;
-            border-radius: 0.8rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        /* Google Form Wrapper */
+        .google-form-wrapper {
             background: rgba(255, 255, 255, 0.05);
-            color: #ffffff;
-            font-size: 0.95rem;
-            font-family: inherit;
-            transition: border-color 0.2s, background 0.2s;
+            border-radius: 1rem;
+            padding: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            height: 100%;
+            min-height: 450px;
         }
 
-        .contact-form input::placeholder,
-        .contact-form textarea::placeholder {
-            color: #7a6b57;
+        .google-form-wrapper iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+            border-radius: 0.5rem;
+            background: #ffffff;
         }
 
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            outline: none;
-            border-color: var(--gold);
-            background: rgba(255, 255, 255, 0.08);
+        /* ===== CALENDAR SECTION ===== */
+        #calendar {
+            background: #ffffff;
         }
 
-        .contact-form textarea {
-            min-height: 120px;
-            resize: vertical;
+        .calendar-wrapper {
+            background: var(--cream-light);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            min-height: 500px;
         }
 
-        .contact-form .btn-primary {
-            align-self: flex-start;
+        .calendar-wrapper .calendly-inline-widget {
+            min-height: 550px;
+            width: 100%;
+            border-radius: 1rem;
+            overflow: hidden;
         }
 
         /* ===== FOOTER ===== */
@@ -901,6 +902,10 @@
             .metrics-grid {
                 grid-template-columns: 1fr 1fr;
             }
+
+            .google-form-wrapper iframe {
+                height: 550px;
+            }
         }
 
         @media screen and (max-width: 500px) {
@@ -937,6 +942,12 @@
             .photo-wrapper {
                 max-width: 130px;
             }
+            .google-form-wrapper iframe {
+                height: 600px;
+            }
+            .calendar-wrapper {
+                padding: 0.5rem;
+            }
         }
 
         @media print {
@@ -966,11 +977,12 @@
                 <i class="fas fa-bars"></i>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#why-lease">Why Lease</a></li>
+                <li><a href="#why-choose">Why Choose</a></li>
                 <li><a href="#track-record">Track Record</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#calendar">Calendar</a></li>
                 <li><a href="#contact" class="nav-cta">Contact</a></li>
             </ul>
         </nav>
@@ -979,7 +991,7 @@
         <header class="hero" id="home">
             <div class="hero-image">
                 <div class="photo-wrapper" id="photoWrapper" onclick="document.getElementById('photoInput').click()">
-                    <img src="https://ui-avatars.com/api/?name=Sanjay+Luthra&size=200&background=2e2b28&color=b89a4b&bold=true" alt="Sanjay Luthra" id="profileImage" />
+                    <img src="https://res.cloudinary.com/ggpmlhti/image/upload/v1784294587/picture_whubpt.png" alt="Sanjay Luthra" id="profileImage" />
                     <div class="photo-overlay">
                         <i class="fas fa-camera"></i> Upload Photo
                     </div>
@@ -988,9 +1000,9 @@
             </div>
             <div class="hero-text">
                 <div class="badge-exec"><i class="fas fa-crown" style="margin-right:0.4rem;"></i> C-Suite · Hospitality Leader</div>
-                <h1>Asset Management &amp; <span>Lease Advisory</span></h1>
+                <h1>Asset Management &amp; <span>Advisory</span></h1>
                 <p class="subtitle">
-                    <i class="fas fa-asterisk"></i> 40+ years of driving profitability, asset protection, and market leadership across the UAE.
+                    <i class="fas fa-asterisk"></i> 40+ years of driving profitability, asset protection, and market leadership across the UAE &amp; KSA.
                 </p>
                 <div class="hero-contact">
                     <a href="tel:+971506457593"><i class="fas fa-phone-alt"></i> +971 50 645 7593</a>
@@ -998,19 +1010,19 @@
                     <a href="#"><i class="fas fa-map-pin"></i> Dubai, UAE</a>
                 </div>
                 <div class="hero-cta-group">
-                    <a href="#contact" class="btn-primary"><i class="fas fa-handshake"></i> Discuss a Lease</a>
-                    <a href="#track-record" class="btn-secondary"><i class="fas fa-chart-line"></i> View Track Record</a>
+                    <a href="#contact" class="btn-primary"><i class="fas fa-handshake"></i> Let's Connect</a>
+                    <a href="#calendar" class="btn-secondary"><i class="fas fa-calendar-alt"></i> Schedule a Meeting</a>
                 </div>
             </div>
         </header>
 
-        <!-- ===== WHY LEASE WITH US ===== -->
-        <section id="why-lease">
-            <div class="section-label">Landlord Advantage</div>
+        <!-- ===== WHY CHOOSE US ===== -->
+        <section id="why-choose">
+            <div class="section-label">Why Choose Us</div>
             <div class="section-divider"></div>
-            <h2 class="section-title">Why Lease With <span>Us</span></h2>
+            <h2 class="section-title">Your Hospitality <span>Partner</span></h2>
             <p class="section-desc">
-                Every property I lead benefits from a proven financial framework, rigorous asset stewardship, and deep UAE market intelligence.
+                Every property I lead benefits from a proven financial framework, rigorous asset stewardship, and deep UAE &amp; KSA market intelligence.
             </p>
             <div class="benefits-grid">
                 <div class="benefit-card">
@@ -1026,7 +1038,7 @@
                 <div class="benefit-card">
                     <div class="icon"><i class="fas fa-bullseye"></i></div>
                     <h3>Market Intelligence</h3>
-                    <p>30+ years of UAE market expertise with an extensive network of corporate and travel industry contacts.</p>
+                    <p>30+ years of UAE &amp; KSA market expertise with an extensive network of corporate and travel industry contacts.</p>
                 </div>
                 <div class="benefit-card">
                     <div class="icon"><i class="fas fa-users"></i></div>
@@ -1051,7 +1063,7 @@
                     <div class="label">Years in UAE</div>
                 </div>
                 <div class="metric-card">
-                    <div class="number">10+</div>
+                    <div class="number">15+</div>
                     <div class="label">Hotels Managed</div>
                 </div>
                 <div class="metric-card">
@@ -1153,7 +1165,7 @@
                 </div>
                 <div class="service-card">
                     <div class="icon"><i class="fas fa-handshake"></i></div>
-                    <h3>Lease Advisory</h3>
+                    <h3>Advisory &amp; Consultancy</h3>
                     <p>Expert guidance for landlords and investors on lease structures, negotiations, and asset strategies.</p>
                     <span class="service-tag">Advisory</span>
                 </div>
@@ -1166,14 +1178,90 @@
             <div class="section-divider"></div>
             <h2 class="section-title">Portfolio <span>Highlights</span></h2>
             <p class="section-desc">
-                A selection of hotels managed and operated across the UAE, showcasing our diverse expertise.
+                A selection of hotels managed and operated across the UAE and KSA, showcasing our diverse expertise.
             </p>
 
+            <!-- LANDMARK HOTELS & SUITES CLUSTER -->
+            <div style="background: var(--cream-light); border-radius: 1.5rem; padding: 1.8rem 2rem; margin-bottom: 2.5rem; border: 1px solid var(--border);">
+                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.2rem;">
+                    <div>
+                        <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--text-dark);">
+                            <i class="fas fa-building" style="color: var(--gold); margin-right: 0.6rem;"></i>
+                            Landmark Hotels &amp; Suites <span style="font-size: 0.9rem; font-weight: 400; color: var(--text-muted);">| Cluster of 7 Hotels</span>
+                        </h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.2rem;">
+                            <i class="fas fa-map-pin" style="color: var(--gold);"></i> 6 Hotels in Dubai, UAE · 1 Hotel in Jeddah, KSA
+                        </p>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                        <span style="background: var(--gold); color: #fff; padding: 0.2rem 1rem; border-radius: 40px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.5px;">
+                            <i class="fas fa-crown"></i> Head of Hospitality
+                        </span>
+                        <span style="background: var(--charcoal); color: #d4cbbd; padding: 0.2rem 1rem; border-radius: 40px; font-size: 0.7rem; font-weight: 500;">
+                            <i class="fas fa-calendar-alt"></i> 2024–Present
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Cluster Property List -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0.8rem;">
+                    <div style="display: flex; align-items: center; gap: 0.8rem; background: #ffffff; padding: 0.8rem 1rem; border-radius: 0.8rem; border: 1px solid var(--border);">
+                        <span style="background: var(--gold); color: #fff; font-size: 0.6rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 20px; white-space: nowrap;">4★</span>
+                        <span style="font-weight: 500; font-size: 0.9rem;">Landmark Grand Hotel</span>
+                        <span style="font-size: 0.7rem; color: var(--text-muted); margin-left: auto;">Dubai</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.8rem; background: #ffffff; padding: 0.8rem 1rem; border-radius: 0.8rem; border: 1px solid var(--border);">
+                        <span style="background: var(--gold); color: #fff; font-size: 0.6rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 20px; white-space: nowrap;">4★</span>
+                        <span style="font-weight: 500; font-size: 0.9rem;">Landmark Premier Hotel</span>
+                        <span style="font-size: 0.7rem; color: var(--text-muted); margin-left: auto;">Dubai</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.8rem; background: #ffffff; padding: 0.8rem 1rem; border-radius: 0.8rem; border: 1px solid var(--border);">
+                        <span style="background: var(--gold); color: #fff; font-size: 0.6rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 20px; white-space: nowrap;">4★</span>
+                        <span style="font-weight: 500; font-size: 0.9rem;">Landmark Summit Hotel</span>
+                        <span style="font-size: 0.7rem; color: var(--text-muted); margin-left: auto;">Dubai</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.8rem; background: #ffffff; padding: 0.8rem 1rem; border-radius: 0.8rem; border: 1px solid var(--border);">
+                        <span style="background: var(--gold); color: #fff; font-size: 0.6rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 20px; white-space: nowrap;">4★</span>
+                        <span style="font-weight: 500; font-size: 0.9rem;">Landmark Hotel Riqqa</span>
+                        <span style="font-size: 0.7rem; color: var(--text-muted); margin-left: auto;">Dubai</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.8rem; background: #ffffff; padding: 0.8rem 1rem; border-radius: 0.8rem; border: 1px solid var(--border);">
+                        <span style="background: #6b5d4a; color: #fff; font-size: 0.6rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 20px; white-space: nowrap;">3★</span>
+                        <span style="font-weight: 500; font-size: 0.9rem;">Landmark Hotel Baniyas</span>
+                        <span style="font-size: 0.7rem; color: var(--text-muted); margin-left: auto;">Dubai</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.8rem; background: #ffffff; padding: 0.8rem 1rem; border-radius: 0.8rem; border: 1px solid var(--border);">
+                        <span style="background: #6b5d4a; color: #fff; font-size: 0.6rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 20px; white-space: nowrap;">3★</span>
+                        <span style="font-weight: 500; font-size: 0.9rem;">Landmark Plaza Hotel</span>
+                        <span style="font-size: 0.7rem; color: var(--text-muted); margin-left: auto;">Dubai</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.8rem; background: #ffffff; padding: 0.8rem 1rem; border-radius: 0.8rem; border: 2px solid var(--gold);">
+                        <span style="background: var(--gold); color: #fff; font-size: 0.6rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 20px; white-space: nowrap;">4★</span>
+                        <span style="font-weight: 500; font-size: 0.9rem; color: var(--gold);">Landmark Hotels &amp; Suites</span>
+                        <span style="font-size: 0.7rem; color: var(--text-muted); margin-left: auto;">Jeddah, KSA</span>
+                    </div>
+                </div>
+
+                <!-- Cluster Stats -->
+                <div style="display: flex; flex-wrap: wrap; gap: 0.8rem 2rem; margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--border);">
+                    <span style="font-size: 0.85rem; color: var(--text-muted);"><i class="fas fa-hotel" style="color: var(--gold);"></i> <strong>7</strong> Properties</span>
+                    <span style="font-size: 0.85rem; color: var(--text-muted);"><i class="fas fa-star" style="color: var(--gold);"></i> 4★ &amp; 3★ Properties</span>
+                    <span style="font-size: 0.85rem; color: var(--text-muted);"><i class="fas fa-map-pin" style="color: var(--gold);"></i> <strong>6</strong> Dubai · <strong>1</strong> Jeddah</span>
+                    <span style="font-size: 0.85rem; color: var(--text-muted);"><i class="fas fa-calendar-alt" style="color: var(--gold);"></i> Head of Hospitality · 2024–Present</span>
+                </div>
+            </div>
+
+            <!-- Previous Hotels -->
+            <h3 style="font-size: 1.1rem; font-weight: 600; margin-bottom: 1.2rem; color: var(--text-dark);">
+                <i class="fas fa-history" style="color: var(--gold); margin-right: 0.5rem;"></i>
+                Previous Portfolio
+            </h3>
+
             <div class="portfolio-grid">
-                <!-- Portfolio Item 1 -->
+                <!-- Metropolitan Hotel Dubai -->
                 <div class="portfolio-card">
                     <div class="portfolio-image" id="portfolioImage1">
-                        <img src="https://placehold.co/600x400/e5ddd0/b89a4b?text=Metropolitan+Hotel+Dubai" alt="Metropolitan Hotel Dubai" id="portfolioImg1" />
+                        <img src="https://res.cloudinary.com/ggpmlhti/image/upload/v1784294961/Metopolitan_Hotel_qzn6r4.png" id="portfolioImg1" />
                         <div class="upload-hint" onclick="event.stopPropagation(); document.getElementById('portfolioInput1').click();">
                             <i class="fas fa-camera"></i> Upload Image
                         </div>
@@ -1186,10 +1274,10 @@
                     </div>
                 </div>
 
-                <!-- Portfolio Item 2 -->
+                <!-- Metropolitan Palace Hotel -->
                 <div class="portfolio-card">
                     <div class="portfolio-image" id="portfolioImage2">
-                        <img src="https://placehold.co/600x400/e5ddd0/b89a4b?text=Metropolitan+Palace+Hotel" alt="Metropolitan Palace Hotel" id="portfolioImg2" />
+                        <img src="https://res.cloudinary.com/ggpmlhti/image/upload/v1784294961/Metopolitan_Hotel_qzn6r4.png" id="portfolioImg2" />
                         <div class="upload-hint" onclick="event.stopPropagation(); document.getElementById('portfolioInput2').click();">
                             <i class="fas fa-camera"></i> Upload Image
                         </div>
@@ -1202,26 +1290,26 @@
                     </div>
                 </div>
 
-                <!-- Portfolio Item 3 -->
+                <!-- Metropolitan Deira Hotel -->
                 <div class="portfolio-card">
                     <div class="portfolio-image" id="portfolioImage3">
-                        <img src="https://placehold.co/600x400/e5ddd0/b89a4b?text=Hawthorn+Hotel" alt="Hawthorn Hotel" id="portfolioImg3" />
+                        <img src="https://res.cloudinary.com/ggpmlhti/image/upload/v1784294961/Metopolitan_Hotel_qzn6r4.png" id="portfolioImg3" />
                         <div class="upload-hint" onclick="event.stopPropagation(); document.getElementById('portfolioInput3').click();">
                             <i class="fas fa-camera"></i> Upload Image
                         </div>
                         <input type="file" id="portfolioInput3" accept="image/*" onchange="uploadPortfolioImage(event, 'portfolioImg3')" />
                     </div>
                     <div class="portfolio-info">
-                        <h3>Hawthorn Hotel / Avenue Hotel</h3>
-                        <div class="meta">4★ · Wyndham (Rebranding)</div>
-                        <div class="highlight">16% ARR Increase · 2008-2009</div>
+                        <h3>Metropolitan Deira Hotel</h3>
+                        <div class="meta">4★ Deluxe City Property</div>
+                        <div class="highlight">1998-2002 · 136 Rooms</div>
                     </div>
                 </div>
 
-                <!-- Portfolio Item 4 -->
+                <!-- Metropolitan Beach Resort -->
                 <div class="portfolio-card">
                     <div class="portfolio-image" id="portfolioImage4">
-                        <img src="https://placehold.co/600x400/e5ddd0/b89a4b?text=Metropolitan+Beach+Resort" alt="Metropolitan Beach Resort" id="portfolioImg4" />
+                        <img src="https://res.cloudinary.com/ggpmlhti/image/upload/v1784294961/Metopolitan_Hotel_qzn6r4.png" id="portfolioImg4" />
                         <div class="upload-hint" onclick="event.stopPropagation(); document.getElementById('portfolioInput4').click();">
                             <i class="fas fa-camera"></i> Upload Image
                         </div>
@@ -1234,26 +1322,26 @@
                     </div>
                 </div>
 
-                <!-- Portfolio Item 5 -->
+                <!-- Hawthorn / Avenue Hotel -->
                 <div class="portfolio-card">
                     <div class="portfolio-image" id="portfolioImage5">
-                        <img src="https://placehold.co/600x400/e5ddd0/b89a4b?text=Metropolitan+Deira+Hotel" alt="Metropolitan Deira Hotel" id="portfolioImg5" />
+                        <img src="https://res.cloudinary.com/ggpmlhti/image/upload/v1784294961/Hawthorn_gsovzi.png" id="portfolioImg5" />
                         <div class="upload-hint" onclick="event.stopPropagation(); document.getElementById('portfolioInput5').click();">
                             <i class="fas fa-camera"></i> Upload Image
                         </div>
                         <input type="file" id="portfolioInput5" accept="image/*" onchange="uploadPortfolioImage(event, 'portfolioImg5')" />
                     </div>
                     <div class="portfolio-info">
-                        <h3>Metropolitan Deira Hotel</h3>
-                        <div class="meta">4★ Deluxe City Property</div>
-                        <div class="highlight">1998-2002 · 136 Rooms</div>
+                        <h3>Hawthorn Hotel / Avenue Hotel</h3>
+                        <div class="meta">4★ · Wyndham (Rebranding)</div>
+                        <div class="highlight">16% ARR Increase · 2008-2009</div>
                     </div>
                 </div>
 
-                <!-- Portfolio Item 6 -->
+                <!-- Royal Abjar Hotel -->
                 <div class="portfolio-card">
                     <div class="portfolio-image" id="portfolioImage6">
-                        <img src="https://placehold.co/600x400/e5ddd0/b89a4b?text=Royal+Abjar+Hotel" alt="Royal Abjar Hotel" id="portfolioImg6" />
+                        <img src="https://res.cloudinary.com/ggpmlhti/image/upload/v1784294961/Renaissance_jmdzrs.png" id="portfolioImg6" />
                         <div class="upload-hint" onclick="event.stopPropagation(); document.getElementById('portfolioInput6').click();">
                             <i class="fas fa-camera"></i> Upload Image
                         </div>
@@ -1264,6 +1352,43 @@
                         <div class="meta">5★ Diamond Award · Leading Hotels of the World</div>
                         <div class="highlight">10% Target Overachievement · 1997-1998</div>
                     </div>
+                </div>
+
+                <!-- Bin Haider Hospitality (5 Hotels) -->
+                <div class="portfolio-card" style="border: 2px solid var(--gold);">
+                    <div class="portfolio-image" id="portfolioImage7">
+                        <img src="https://res.cloudinary.com/ggpmlhti/image/upload/v1784296833/logo-hospitality_q1brbg.jpg" id="portfolioImg7" />
+                        <div class="upload-hint" onclick="event.stopPropagation(); document.getElementById('portfolioInput7').click();">
+                            <i class="fas fa-camera"></i> Upload Image
+                        </div>
+                        <input type="file" id="portfolioInput7" accept="image/*" onchange="uploadPortfolioImage(event, 'portfolioImg7')" />
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Bin Haider Hospitality <span style="font-size: 0.7rem; color: var(--gold); font-weight: 600;">Cluster</span></h3>
+                        <div class="meta">5 Hotels · Dubai, UAE</div>
+                        <div class="highlight">Cluster Director · 2022-2024</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portfolio Summary -->
+            <div style="display: flex; flex-wrap: wrap; gap: 1.5rem 3rem; margin-top: 2rem; padding: 1.5rem 2rem; background: var(--cream-light); border-radius: 1.2rem; border: 1px solid var(--border);">
+                <div>
+                    <span style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted);">Total Properties</span>
+                    <div style="font-size: 1.8rem; font-weight: 700; color: var(--gold);">15+</div>
+                </div>
+                <div>
+                    <span style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted);">Clusters Managed</span>
+                    <div style="font-size: 1.8rem; font-weight: 700; color: var(--gold);">3</div>
+                    <span style="font-size: 0.75rem; color: var(--text-muted);">Landmark (7) · Bin Haider (5) · Metropolitan (2)</span>
+                </div>
+                <div>
+                    <span style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted);">Properties by Region</span>
+                    <div style="font-size: 1.1rem; font-weight: 600; color: var(--text-dark);">UAE · KSA</div>
+                </div>
+                <div>
+                    <span style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted);">Star Ratings</span>
+                    <div style="font-size: 1.1rem; font-weight: 600; color: var(--text-dark);">5★ · 4★ · 3★</div>
                 </div>
             </div>
         </section>
@@ -1310,13 +1435,32 @@
             </div>
         </section>
 
+        <!-- ===== CALENDAR ===== -->
+        <section id="calendar">
+            <div class="section-label">Schedule a Meeting</div>
+            <div class="section-divider"></div>
+            <h2 class="section-title">Let's Find a <span>Time</span></h2>
+            <p class="section-desc">
+                Select a convenient time slot below to discuss how we can collaborate on your hospitality asset.
+            </p>
+
+            <div class="calendar-wrapper">
+                <!-- Calendly Inline Widget -->
+                <div class="calendly-inline-widget" data-url="https://calendly.com/sanlmt/30min" style="min-height:550px;width:100%;"></div>
+            </div>
+            <p style="text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
+                <i class="fas fa-clock" style="color: var(--gold);"></i> 
+                All times are in Gulf Standard Time (GST) · Dubai, UAE
+            </p>
+        </section>
+
         <!-- ===== CONTACT ===== -->
         <section id="contact">
             <div class="section-label">Get in Touch</div>
             <div class="section-divider"></div>
-            <h2 class="section-title">Let's Discuss Your <span>Asset</span></h2>
+            <h2 class="section-title">Let's <span>Connect</span></h2>
             <p class="section-desc">
-                Ready to explore a lease partnership? Reach out to discuss how we can maximize your property's potential.
+                Have questions about your property? Reach out to discuss how we can maximize your asset's potential.
             </p>
 
             <div class="contact-grid">
@@ -1342,42 +1486,64 @@
                     <div style="margin-top:1.5rem; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,0.06);">
                         <p style="color:#7a6b57; font-size:0.85rem;">
                             <i class="fas fa-check-circle" style="color:var(--gold);"></i>
-                            References available upon request
+                            UAE-based · Available for immediate discussions
                         </p>
                         <p style="color:#7a6b57; font-size:0.85rem; margin-top:0.3rem;">
                             <i class="fas fa-check-circle" style="color:var(--gold);"></i>
-                            UAE-based · Available for immediate discussions
+                            <a href="#calendar" style="color: var(--gold); text-decoration: none;">Schedule a meeting</a> via the calendar above
                         </p>
                     </div>
                 </div>
 
-                <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
-                    <input type="text" placeholder="Your Name" required />
-                    <input type="email" placeholder="Email Address" required />
-                    <input type="tel" placeholder="Phone Number" />
-                    <input type="text" placeholder="Property Name / Location" />
-                    <textarea placeholder="Tell me about your property and what you're looking for..." required></textarea>
-                    <button type="submit" class="btn-primary">
-                        <i class="fas fa-paper-plane"></i> Send Inquiry
-                    </button>
-                </form>
+                <!-- Google Form Integration -->
+                <div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 0.8rem; color: #ffffff;">
+                        <i class="fas fa-paper-plane" style="color:var(--gold); margin-right:0.5rem;"></i> 
+                        Send an Inquiry
+                    </h3>
+                    <div class="google-form-wrapper">
+                        <!-- 
+                            REPLACE THE SRC BELOW WITH YOUR GOOGLE FORM EMBED URL
+                            
+                            HOW TO GET YOUR GOOGLE FORM EMBED URL:
+                            1. Go to Google Forms and create your form
+                            2. Click the "Send" button (top right)
+                            3. Click the "< >" (embed) tab
+                            4. Copy the entire src URL from the iframe code
+                            5. Paste it below replacing the current src
+                            
+                            EXAMPLE: 
+                            src="https://docs.google.com/forms/d/e/your-form-id/viewform?embedded=true"
+                        -->
+                        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfsiRldhDEUqjkJES7PcTf2PfL3mk9-He7VusMgFmlwnGnWZw/viewform?embedded=true" 
+                            frameborder="0" 
+                            marginheight="0" 
+                            marginwidth="0">
+                            Loading…
+                        </iframe>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- ===== FOOTER ===== -->
         <footer class="footer">
             <div>
-                &copy; 2026 <span style="color:var(--gold);">Luthra Hospitality</span> · Asset Management &amp; Lease Advisory
+                &copy; 2026 <span style="color:var(--gold);">Luthra Hospitality</span> · Asset Management &amp; Advisory
             </div>
             <div class="socials">
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-x-twitter"></i></a>
-                <a href="mailto:sanlmt@gmail.com"><i class="fas fa-envelope"></i></a>
+                <!-- REPLACE YOUR-LINKEDIN-URL with your actual LinkedIn profile URL -->
+                <a href="https://www.linkedin.com/in/sanjay-luthra-6a587a372/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="mailto:sanlmt@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="#" title="Twitter/X"><i class="fab fa-x-twitter"></i></a>
             </div>
         </footer>
 
         <div class="gold-bar"></div>
     </div>
+
+    <!-- Calendly JavaScript -->
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 
     <script>
         // ===== NAVIGATION TOGGLE =====
@@ -1415,7 +1581,7 @@
             });
         });
 
-        // ===== PHOTO UPLOAD =====
+        // ===== PHOTO UPLOAD (Local) =====
         function uploadPhoto(event) {
             const file = event.target.files[0];
             if (file) {
@@ -1427,7 +1593,7 @@
             }
         }
 
-        // ===== PORTFOLIO IMAGE UPLOAD =====
+        // ===== PORTFOLIO IMAGE UPLOAD (Local) =====
         function uploadPortfolioImage(event, imgId) {
             const file = event.target.files[0];
             if (file) {
@@ -1437,27 +1603,6 @@
                 };
                 reader.readAsDataURL(file);
             }
-        }
-
-        // ===== CONTACT FORM =====
-        function handleSubmit(event) {
-            event.preventDefault();
-            const btn = event.target.querySelector('button[type="submit"]');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            btn.disabled = true;
-
-            // Simulate sending
-            setTimeout(() => {
-                btn.innerHTML = '<i class="fas fa-check"></i> Inquiry Sent!';
-                btn.style.background = '#2d7d46';
-                setTimeout(() => {
-                    btn.innerHTML = originalText;
-                    btn.style.background = '';
-                    btn.disabled = false;
-                    event.target.reset();
-                }, 2500);
-            }, 1500);
         }
 
         // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
@@ -1471,6 +1616,13 @@
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
+        });
+
+        // ===== CALENDLY WIDGET RELOAD (for responsiveness) =====
+        window.addEventListener('resize', function() {
+            if (window.Calendly) {
+                window.Calendly.initInlineWidgets();
+            }
         });
     </script>
 
